@@ -1,6 +1,6 @@
-public abstract class Animal {
+public abstract class Animal implements Comparable<Animal> {
 
-    private String name;
+    private  String name;
 
     public Animal(String name) {
         this.name = name;
@@ -10,5 +10,13 @@ public abstract class Animal {
 
     public abstract void speak();
 
+    @Override
+    public String toString() {
+        return "ANIMAL: " + getName();
+    }
 
+    @Override
+    public int compareTo(Animal animal) {
+        return getName().compareTo(animal.getName());
+    }
 }

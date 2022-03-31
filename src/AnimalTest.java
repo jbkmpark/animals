@@ -47,7 +47,37 @@ public class AnimalTest {
         animal2.speak();
 
         Predator p1 = (Predator) animal2;
-        p1.hunt(animal3);
+        try {
+            p1.hunt(animal3);
+        } catch(FoodAllergyException e) {
+            System.out.println("Oops! don't feed mice to foxes");
+        } catch(EatingException e) {
+            System.out.println("some other fox issue");
+        }
+
+        try {
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+            p1.hunt(new Rabbit("fred"));
+        } catch(FoodAllergyException e) {
+            System.out.println("Oops! don't feed mice to foxes");
+        } catch(EatingException e) {
+            System.out.println("some other fox issue");
+        }
+
 
         Predator fudd = prey -> {
             System.out.println("Be vewwwy vewwy quiet!");
@@ -55,7 +85,11 @@ public class AnimalTest {
             prey.speak();
         };
 
-        fudd.hunt(animal3);
+        try {
+            fudd.hunt(animal3);
+        } catch(EatingException e) {
+            System.out.println("hunt failed");
+        }
 
 
         Object p5 = fudd;
